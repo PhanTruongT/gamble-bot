@@ -1,4 +1,5 @@
 import os
+import sys
 from twitchio.ext import commands
 import asyncio
 
@@ -15,7 +16,7 @@ class Bot(commands.Bot):
 
     async def event_ready(self):
         loop = asyncio.get_event_loop()
-        task = loop.create_task(self.gamble(3))
+        task = loop.create_task(self.gamble(5))
         await task
 
     async def gamble(self, i):
@@ -26,7 +27,4 @@ class Bot(commands.Bot):
 
 if __name__ == "__main__":
     bot = Bot()
-    try:
-        bot.run()
-    except KeyboardInterrupt:
-        pass
+    bot.run()
