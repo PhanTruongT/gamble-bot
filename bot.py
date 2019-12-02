@@ -1,5 +1,4 @@
 import os
-import sys
 from twitchio.ext import commands
 import asyncio
 
@@ -21,7 +20,7 @@ class Bot(commands.Bot):
 
     async def gamble(self, i):
         for i in range(i):
-            await bot._ws.send_privmsg(os.environ["INIT_CHANNEL"], "test")
+            await bot._ws.send_privmsg(os.environ["INIT_CHANNEL"], "!gamble 100")
             await asyncio.sleep(2)
 
 
