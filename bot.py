@@ -1,5 +1,6 @@
 import os
 from twitchio.ext import commands
+import asyncio
 
 
 class Bot(commands.Bot):
@@ -13,9 +14,19 @@ class Bot(commands.Bot):
         )
 
     async def event_ready(self):
-        await self._ws.send_privmsg(os.environ["INIT_CHANNEL"], "!gamble 1")
+        loop = asyncio.get_event_loop()
+        task = loop.create_task(self.gamble(3))
+        await task
+
+    async def gamble(self, i):
+        for i in range(i):
+            await bot._ws.send_privmsg(os.environ["INIT_CHANNEL"], "test")
+            await asyncio.sleep(2)
 
 
 if __name__ == "__main__":
     bot = Bot()
-    bot.run()
+    try:
+        bot.run()
+    except KeyboardInterrupt:
+        pass
