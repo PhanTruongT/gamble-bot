@@ -15,13 +15,13 @@ class Bot(commands.Bot):
 
     async def event_ready(self):
         loop = asyncio.get_event_loop()
-        task = loop.create_task(self.gamble(5))
+        task = loop.create_task(self.gamble(100))
         await task
 
     async def gamble(self, i):
         for i in range(i):
-            await bot._ws.send_privmsg(os.environ["INIT_CHANNEL"], "!gamble 100")
-            await asyncio.sleep(2)
+            await bot._ws.send_privmsg(os.environ["INIT_CHANNEL"], "!gamble 150")
+            await asyncio.sleep(121)
 
 
 if __name__ == "__main__":
